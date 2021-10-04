@@ -31,15 +31,19 @@ class AllTraversal
         root.right.right = new Node(7);
 
         preOrderRecursive(root);
-        System.out.println(" ");
+        System.out.println();
         preOrderIterative(root);
-        System.out.println(" ");
+        
+        System.out.println();
+        
         inOrderRecursive(root);
-        System.out.println(" ");
+        System.out.println();
         inOrderIterative(root);
-        System.out.println(" ");
+        
+        System.out.println();
+        
         postOrderRecursive(root);
-        System.out.println(" ");
+        System.out.println();
         postOrderIterative(root);
 
     }
@@ -55,7 +59,6 @@ class AllTraversal
     }
 
 
-    //Stack pehle right fir left - to keep left as top
 
     private static void preOrderIterative(Node root)
     {
@@ -90,7 +93,6 @@ class AllTraversal
     }
 
 
-    //Stack me dalo left se empty hojae to right wala print kro
     private static void inOrderIterative(Node root)
     {
         Stack<Node> stack = new Stack<>();
@@ -153,6 +155,5 @@ class AllTraversal
             System.out.print(dataStore.pop() + " ");
         }
     }
-
 
 }
