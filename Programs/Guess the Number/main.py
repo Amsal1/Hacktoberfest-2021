@@ -14,7 +14,7 @@ answer = randint(1, 100)
 chances_left = 0
 quit_game = False
 print(logo)
-print(f"Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
+print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
 difficulty_level = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
 
 if difficulty_level == "easy":
@@ -31,16 +31,16 @@ while chances_left > 0:
 		chances_left -= 1
 		if not user_guess == answer:
 			print("Guess again.")
-			print(f"You Have {chances_left} Chances Left")
+			print("You Have {chances_left} Chances Left")
 	elif user_guess < answer:
 		print("Too low.")
 		if not user_guess == answer:
 			print("Guess again.")
-			print(f"You Have {chances_left} Chances Left")
+			print("You Have {chances_left} Chances Left")
 		chances_left -= 1
 	elif user_guess == answer:
-		print(f"You got it! The answer was {answer}")
+		print("You got it! The answer was {answer}")
 		chances_left = 0
 	if chances_left <= 0:
-		print(f"You've run out of guesses, you lose. By The Way, The Answer was {answer}")
+		print("You've run out of guesses, you lose. By The Way, The Answer was {answer}")
 
