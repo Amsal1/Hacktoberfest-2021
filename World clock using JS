@@ -1,0 +1,176 @@
+\\ world clock using jQuery
+
+1) HTML code => You just need to add timezoneoffset of country 
+
+  <div class="clock-grid-wrapper">
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='-7'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>SAN FRANCISCO</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='-5'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>CHICAGO</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='-4'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>NEWARK</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='1'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>DUBLIN</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='1'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>LONDON</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='2'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>PRAGUE</p>
+        </div>
+    </div>
+        <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='5.5'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>Mumbai</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='8'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>MACAU</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='8'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>BEIJING</p>
+        </div>
+    </div>
+    <div class="clock-item">
+        <div class="clock-inner">
+            <div class="clock" timezoneoffset='9'>
+                <img src="images/watch-face.svg" alt='clock'>
+                <div class="minute">
+                    <img src="images/minute.svg" alt='minute'>
+                </div>
+                <div class="hour">
+                    <img src="images/hour.svg" alt='hour'>
+                </div>
+            </div>
+            <p>TOKYO</p>
+        </div>
+    </div>
+</div>
+
+2) JS code 
+
+var HOURHAND = document.getElementsByClassName("hour");
+var MINUTEHAND = document.getElementsByClassName("minute");
+var clock = document.getElementsByClassName('clock');
+
+function startClock() {
+    for (var i = 0; i < clock.length; i++) {
+       var d = new Date();
+       var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+       var offset = clock[i].getAttribute('timezoneoffset');
+       var currentTime = new Date(utc + (3600000*offset));
+       var currentHours = currentTime.getHours ( );
+       var currentMinutes = currentTime.getMinutes ( );
+       var currentSeconds = currentTime.getSeconds();
+       currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+       currentSeconds = ( currentSeconds < 60 ? "0" : "" ) + currentSeconds;
+       var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+       currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+       currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+    
+       var minPosition = (6 * currentMinutes) + (currentSeconds * (360 / 60) / 60);
+       var hrPosition = ((360 / 12) * currentHours) + (currentMinutes * (360 / 60) / 12);
+       MINUTEHAND[i].style.transform = "rotate(" + minPosition + "deg)";
+       HOURHAND[i].style.transform = "rotate(" + hrPosition + "deg)";
+   }
+}
+
+setInterval(startClock, 1000);
