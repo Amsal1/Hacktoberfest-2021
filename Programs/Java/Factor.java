@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class factor{
+public class Factor{
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("------------------Program to print factor of n numbers------------------");
