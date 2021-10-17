@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Bicit giniritir...</title>
+  </head>
+
+  <style>
+      body{
+        background-color: #bce6eb;
+      }
+  </style>
+  <body>
+
+<div class="container container-fluid fill-height" style="display:flex; justify-content: center; align-items: center; height: 100vh;">
+
+<div class="card mx-auto text-center" style="width: 400px; background-color: #fdcfdf; box-shadow: 5px 5px 15px #fbbedf; border: none; border-radius: 10px;">
+    <div class="card-body">
+        <h5 class="card-title mb-3">BICIT GINIRITIRRR</h5>
+        <div class="form-group">
+          <label for="exampleInputEmail1">HALAH</label>
+          <input type="text" class="form-control mt-3" id="text" aria-describedby="text1" autocomplete="off" autofocus placeholder="">
+      </div>
+      <div class="form-group mt-2">
+          <label for="exampleInputEmail1">HILIH</label>
+          <input type="text" class="form-control mt-3" id="text2" aria-describedby="text2" placeholder=""
+              readonly>
+      </div>
+    </div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<script>
+
+$('#exc').on('click', function () {
+            a()
+        })
+
+        $('#text').on('keyup', function () {
+            a()
+        })
+
+        function a() {
+            const halah = document.getElementById("text").value;
+            let k = halah.toLowerCase();
+            let hilih = k.replace(/[aueo]/gi, "i");
+            document.getElementById("text2").value = hilih;
+        }
+
+
+
+</script>
+
