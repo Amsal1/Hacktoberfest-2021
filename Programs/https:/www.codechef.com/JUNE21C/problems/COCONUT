@@ -1,0 +1,8 @@
+# cook your dish here
+for _ in range(int(input())):
+    Lis=list(map(int,input().split()))
+    A=Lis[0]
+    B=Lis[1]
+    C=Lis[2]
+    D=Lis[3]
+    print(int(C/A+D/B))
