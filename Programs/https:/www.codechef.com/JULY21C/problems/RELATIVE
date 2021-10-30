@@ -1,0 +1,6 @@
+# cook your dish here
+for _ in range(int(input())):
+    Lis=list(map(int, input().split()))
+    g=Lis[0]
+    c=Lis[1]
+    print(int(c**2/(2*g)))
