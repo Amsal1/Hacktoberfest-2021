@@ -1,0 +1,83 @@
+#connect me for support libraries
+import cv2
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.image import Image
+
+i=0
+class MainApp(App):
+    def build(self):
+        global i
+        layout = BoxLayout(padding=.1,spacing=0,orientation='vertical')
+        layout2 = BoxLayout(padding=.1,orientation='horizontal')
+        layout3 = BoxLayout(padding=.1,orientation='horizontal')
+        self.img = Image(source='im1.jpg',
+                    size_hint=(1, 1),pos_hint={ 'center_x': .5})
+        button1 = Button(text='RGB2GRAY',
+                        size_hint=(.1, .5),)
+        button1.bind(on_press=self.on_press_button)
+        button2 = Button(text='RGB2HSV',
+                        size_hint=(.1, .5),)
+        button2.bind(on_press=self.on_press_button)
+        button3 = Button(text='Reset',
+                        size_hint=(1, .5),)
+        button3.bind(on_press=self.on_press_button)
+        button4 = Button(text='EDGE DETECTION',
+                        size_hint=(.1, .5),)
+        button4.bind(on_press=self.on_press_button)
+        button5 = Button(text='RGB2YUV',
+                        size_hint=(.1, .5),)
+        button5.bind(on_press=self.on_press_button)
+        button6 = Button(text='BLUR',
+                        size_hint=(.1, .5),)
+        button6.bind(on_press=self.on_press_button)
+        layout.add_widget(self.img)
+        layout2.add_widget(button1)
+        layout2.add_widget(button2)
+        layout2.add_widget(button5)
+        layout3.add_widget(button4)
+        layout3.add_widget(button6)
+        layout.add_widget(layout2)
+        layout.add_widget(layout3)
+        layout.add_widget(button3)
+        return layout
+
+    def on_press_button(self, instance):
+        if instance.text=="RGB2GRAY":
+            test_image= cv2.imread('im1.jpg')
+            print('1')
+            test_image=cv2.cvtColor(test_image, cv2.COLOR_BGR2GRAY)
+            cv2.imwrite('im2.png', test_image) 
+            self.img.source='im2.png'
+        elif instance.text=="RGB2HSV":
+            test_image=cv2.imread('im1.jpg')
+            print('2')
+            test_image=cv2.cvtColor(test_image, cv2.COLOR_BGR2HSV)
+            cv2.imwrite('im3.png', test_image) 
+            self.img.source='im3.png'
+        elif instance.text=="RGB2YUV":
+            test_image=cv2.imread('im1.jpg')
+            test_image=cv2.cvtColor(test_image, cv2.COLOR_BGR2YUV)
+            cv2.imwrite('im4.png', test_image) 
+            print('3')
+            self.img.source='im4.png'
+        elif instance.text=="EDGE DETECTION":
+            test_image=cv2.imread('im1.jpg')
+            test_image=cv2.Canny(image=test_image, threshold1=120, threshold2=150)
+            cv2.imwrite('im6.png',test_image)
+            print('3')
+            self.img.source='im6.png'
+        elif instance.text=="BLUR":
+            test_image=cv2.imread('im1.jpg')
+            img_blur = cv2.GaussianBlur(test_image, (21,21), 10) 
+            cv2.imwrite('im5.png',img_blur)
+            print('3')
+            self.img.source='im5.png'
+
+        elif instance.text=="Reset":
+            self.img.source='im1.jpg'
+        return i	
+if __name__ == '__main__':
+    app = MainApp()
+    app.run()
